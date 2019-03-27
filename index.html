@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->       
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel ="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>VIAS EDITOR</title>
+    </head>
+    
+    <body><!--style="background-color: rgb(140, 29, 64,0.3);ASU MAROON COLOR-->    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <h1 class="display-1">
+            <b>VIAS EDITOR</b>
+        </h1>
+        <div> <!--Tabs (Update, Add) -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Edit/Remove</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Add</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent" style="padding-top:3%; padding-bottom:5%">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> <!--Edit Page-->
+                    <div class = "content"> <!--Content-->
+                        <div class = "one"> <!--Search-->
+                            <h2>SEARCH</h2>
+                            <div class="one">
+                            <input id="search_input" type="text" class="form-control" placeholder="Search..."><br>
+                            <button id="find_button" type="button" class="btn btn-primary" >Find</button><br>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = "one"> <!-- Results-->
+                            <h2>RESULTS</h2>   
+                                <div class="one">
+                                    <ul id="results" class="list-group">
+                                        <!-- <button type="button" class="list-group-item list-group-item-action">1</button>
+                                        <button type="button" class="list-group-item list-group-item-action">2</button>
+                                        <button type="button" class="list-group-item list-group-item-action">3</button> -->
+                                    </ul><br>
+                                </div>                             
+                                <hr>
+                        </div>                        
+                        <div class = "one"> <!-- EDIT DATA-->
+                            <h2>EDIT/REMOVE</h2>
+                            <h4>Question:</h4>
+                            <textarea id="selectedQst" class="form-control" placeholder="Result..." style="overflow:auto; min-height: fit-content"></textarea>
+                            <h4 style ="padding-top: 1%">Answer:</h4>
+                            <textarea id="selectedAns" class = "form-control" placeholder="Result..."></textarea>
+                            <div class ="d-flex justify-content-between" style="padding-top:2%">
+                                <button id="update_button" type="button" class="btn btn-primary">Update</button>
+                                <button id="delete_button" type="button" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <!-- Add Page -->
+                    <div class = "content">
+                        <div class = "one"> <!--add-->
+                            <h2>ADD</h2>
+                            <div class= "container">                                
+                                <div class = "row">
+                                    <div class="col-2">Question:</div>
+                                    <div class="col-10"><input id="qst" type="text" class="form-control" placeholder="Question..."></div>
+                                </div> <br>
+                                <div class = "row">
+                                        <div class="col-2">Answer:</div>
+                                        <div class="col-10"><input id="ans" type="text" class="form-control" placeholder="Answer..."></div>
+                                </div>
+                                <hr>
+                                <div class = "row">
+                                    <div class = "col">                    
+                                        <div class ="d-flex justify-content-center">
+                                            <button id="add_submit" type="button" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                
+                        </div>
+                    </div>                        
+                    </div>
+                </div>                
+            </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <!-- <script type="text/javascript">
+        let API_URL = "https://b6us0ayd59.execute-api.us-east-1.amazonaws.com/prod/entries";
+        $('#add_submit').on('click', function(){
+                $.ajax({
+                    type: 'POST',
+                    url: API_URL,
+                    data: JSON.stringify({
+                        "question": $('#qst').val(),
+                        "answer": $('#ans').val()}),
+                    contentType: "application/json",
+                    success: function(data){
+                        location.reload();
+                    }
+                });
+                return false;
+        });
+    </script> -->
+    </body>
+</html>

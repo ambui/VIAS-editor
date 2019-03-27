@@ -1,0 +1,43 @@
+h1{
+    text-align: center;
+    background-color: #FFC627;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 6px;
+    border-color: rgb(140, 29, 64);
+    
+}
+
+h4 {
+    margin-left: 1%;
+}
+
+div.one{
+    align-content: center;
+    /* margin-left: 7%;
+    margin-right: 7%; */
+    padding-top: 0.5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-bottom: 2.5%;
+    /* border-left-style: solid;
+    border-right-style: solid; */
+}
+
+div.content {
+    background-color:whitesmoke;
+    border-radius: 1%;
+    border-style: solid;
+    border-color: #DDD;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.divider{
+    height: 10px;
+}
+
